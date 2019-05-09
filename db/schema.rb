@@ -12,13 +12,16 @@
 
 ActiveRecord::Schema.define(version: 2019_05_07_133312) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
     t.string "resource_type"
-    t.integer "resource_id"
+    t.bigint "resource_id"
     t.string "author_type"
-    t.integer "author_id"
+    t.bigint "author_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id"
@@ -55,7 +58,7 @@ ActiveRecord::Schema.define(version: 2019_05_07_133312) do
 
   create_table "vehicles", force: :cascade do |t|
     t.string "number"
-    t.integer "member_id"
+    t.bigint "member_id"
     t.integer "vehicle_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
